@@ -1,5 +1,8 @@
 Check how retail petrol price in Australia depends on crude oil price
 
+
+Blog post with research details: https://levashov.biz/are-petrol-prices-in-australia-fair/ 
+
 Data sources:
 Crude Oil price, AUD/USD FX rate  - https://fred.stlouisfed.org  
 
