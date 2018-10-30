@@ -32,13 +32,7 @@ df$date <- as.Date(df$my)
 df <- select (df,c("date", "oilaud"))  
 
 
-#### crude oil in AUD chart
 
-df %>% ggplot(aes(date, oilaud)) +
-        geom_line()+
-        xlab("Date")+ylab ("Price per barrel, $AUD")+
-        ggtitle("Crude oil price")+
-        theme_economist()
         
 
 # petrol retail prices
@@ -53,7 +47,15 @@ petrol <- petrol %>% mutate(my=paste0("01", "-", Month)) %>%
 names(petrol) <- c("date", "petrol_price")
 
 df1 <- inner_join(df, petrol, by=c("date"))
+write.csv(df1, file="petrol-oil.csv")
 
+#### crude oil in AUD chart
+
+df %>% ggplot(aes(date, oilaud)) +
+        geom_line()+
+        xlab("Date")+ylab ("Price per barrel, $AUD")+
+        ggtitle("Crude oil price")+
+        theme_economist()
 
 # petrol price chart
 df1 %>% ggplot(aes(date, petrol_price)) +
