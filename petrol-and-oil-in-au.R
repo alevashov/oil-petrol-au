@@ -51,7 +51,7 @@ write.csv(df1, file="petrol-oil.csv")
 
 #### crude oil in AUD chart
 
-df %>% ggplot(aes(date, oilaud)) +
+df1 %>% ggplot(aes(date, oilaud)) +
         geom_line()+
         xlab("Date")+ylab ("Price per barrel, $AUD")+
         ggtitle("Crude oil price")+
@@ -60,18 +60,11 @@ df %>% ggplot(aes(date, oilaud)) +
 # petrol price chart
 df1 %>% ggplot(aes(date, petrol_price)) +
         geom_line()+
-        xlab("Date")+ylab ("Price, cents per liter")+
+        xlab("Date")+ylab ("Price, cents per litre")+
         ggtitle("Retail petrol price")+
         theme_economist()
 
 
-# petrol vs crude oil scatterplot
-
-df1 %>% ggplot(aes(oilaud, petrol_price, color=factor(year(date)))) +
-        geom_point(size=3)+
-        xlab("Crude oil, $ per barrel")+ylab ("Petrol, cents per liter")+
-        ggtitle("Petrol vs crude oil")+
-        theme_economist()
 
 # petrol vs crude oil chart
 df1 %>% ggplot(aes(date))+
@@ -82,7 +75,20 @@ df1 %>% ggplot(aes(date))+
         ggtitle("Retail petrol price vs crude oil price")+
         theme_economist()
 
+
+
+# petrol vs crude oil scatterplot
+
+df1 %>% ggplot(aes(oilaud, petrol_price, color=factor(year(date)))) +
+        geom_point(size=3)+
+        labs(title = "Petrol vs crude oil\n", x = "Crude oil, $ per barrel", y = "Petrol, cents per liter", color = "Colors for years\n")+
+        theme_economist()
+
+# correlation calculation
+
 cor(df1$petrol_price, df1$oilaud)
+
+
 
 # petrol vs crude oil chart since 2015
 df1 %>% filter(date >= as.Date("2015-01-01")) %>%
@@ -101,18 +107,15 @@ summary(over90)
 
 over90 %>%  ggplot(aes(oilaud, petrol_price, color=factor(year(date)))) +
         geom_point(size=3)+
-        xlab("Crude oil, AUD per barrel")+ylab ("Petrol, AU cents per liter")+
-        ggtitle("Petrol vs crude oil")+
-        geom_hline(yintercept = 157)+
-        geom_vline(xintercept = 104)+
-        theme_economist()
+        labs(title = "Petrol vs crude oil\n", x = "Crude oil, $ per barrel", y = "Petrol, cents per liter", color = "Colors for years\n")+        theme_economist()
+        
 
+# plot over 100
 over100 <- df1 %>% filter(oilaud >100)
-
 over100 %>%  ggplot(aes(oilaud, petrol_price, color=factor(year(date)))) +
         geom_point(size=3)+
-        xlab("Crude oil, AUD per barrel")+ylab ("Petrol, AU cents per liter")+
-        ggtitle("Petrol retail in Australia vs crude oil, when crude oil over AU$100")+
-        geom_hline(yintercept = 157)+
-        geom_vline(xintercept = 104)+
+        labs(title = "Petrol retail in Australia vs crude oil, when crude oil over AU$100\n", x = "Crude oil, $ per barrel", y = "Petrol, cents per liter", color = "Colors for years\n")+
+        geom_hline(yintercept = 157.3)+
+        geom_vline(xintercept = 104.29)+
         theme_economist()
+
