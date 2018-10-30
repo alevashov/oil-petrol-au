@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1540850861154.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "1D7D00BF",
+    "lastKnownWriteTime" : 1540870424,
+    "last_content_update" : 1540870424485,
+    "path" : "~/study/R misc/oil vs petrol in au/petrol-and-oil-in-au.R",
+    "project_path" : "petrol-and-oil-in-au.R",
+    "properties" : {
+        "cursorPosition" : "116,0",
+        "scrollLine" : "83",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
